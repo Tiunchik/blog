@@ -3,14 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainLayotComponent } from './shared/components/main-layot/main-layot.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { PostPageComponent } from './post-page/post-page.component';
+import {AdminModule} from './admin/admin.module';
+import { PostComponent } from './shared/components/post/post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainLayotComponent,
+    HomePageComponent,
+    PostPageComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
