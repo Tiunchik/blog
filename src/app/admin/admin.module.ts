@@ -7,6 +7,8 @@ import {DashboardPageComponent} from './dashboard-page/dashboard-page.component'
 import {CreatePageComponent} from './create-page/create-page.component';
 import {EditPageComponent} from './edit-page/edit-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './shared/auth.service';
+import {SharedModule} from './shared/shared.module';
 
 const routes: Routes = [
   {
@@ -21,19 +23,24 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations:
-    [AdminLayotComponent,
-      LoginPageComponent,
-      DashboardPageComponent,
-      CreatePageComponent,
-      EditPageComponent],
+  declarations: [
+    AdminLayotComponent,
+    LoginPageComponent,
+    DashboardPageComponent,
+    CreatePageComponent,
+    EditPageComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthService
+  ]
 })
 export class AdminModule {
 }
