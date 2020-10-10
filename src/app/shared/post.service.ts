@@ -31,14 +31,35 @@ export class PostService {
       .pipe(
         map((resnose: { [key: string]: any }) => {
           return Object
-             .keys(resnose)
-             .map( key => ({
-               ...resnose[key],
-               id: key,
-               date: new Date(resnose[key].date)
-             }));
+            .keys(resnose)
+            .map(key => ({
+              ...resnose[key],
+              id: key,
+              date: new Date(resnose[key].date)
+            }));
         })
       );
+  }
+
+  getById(id: string): Observable<Post> {
+    return this.http.get<Post>(`${environment.fbDdUrl}/posts/${id}.json`)
+      .pipe(
+        map((post: Post) => {
+          return {
+            ...post,
+            id,
+            date: new Date(post.date)
+          };
+        })
+      );
+  }
+
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.fbDdUrl}/posts/${id}.json`);
+  }
+
+  edit(post: Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.fbDdUrl}/posts/${post.id}.json`, post);
   }
 
 }

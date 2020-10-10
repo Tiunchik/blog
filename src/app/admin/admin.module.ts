@@ -11,6 +11,7 @@ import {AuthService} from './shared/services/auth.service';
 import {SharedModule} from './shared/shared.module';
 import {AuthGuard} from './shared/services/auth.guard';
 import {SearchPipe} from './shared/pipes/search.pipe';
+import {AlertService} from './shared/services/alert.service';
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   providers: [
-    AuthGuard
+    AuthGuard,
+    AlertService
   ]
 })
 export class AdminModule {
