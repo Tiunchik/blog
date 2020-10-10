@@ -1,9 +1,13 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Log in admin pannel</h2>
+
+  <div class="alert-danger" *ngIf="auth.error$ | async as error">{{error}}</div>
+
+  <div class="alert-info" *ngIf="message">{{message}}</div>
   <div
     [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
     class="form-control"
-    >
+  >
     <label for="email">Email</label>
     <input type="email" id="email" formControlName="email">
     <div
@@ -24,15 +28,16 @@
       class="validation">
       <small *ngIf="form.get('password').errors.required">Should be fulfilled</small>
       <small *ngIf="form.get('password').errors.minlength">Current length is
-                                                    {{ form.get('password').errors.minlength.actualLength }}
-                                                       but required ' {{ form.get('password')
-                                                      .errors.minlength.requiredLength}}</small>
+        {{ form.get('password').errors.minlength.actualLength }}
+        but required ' {{ form.get('password')
+          .errors.minlength.requiredLength}}</small>
     </div>
   </div>
 
   <button
     type="submit"
     class="btn btn-primary"
-    [disabled]="form.invalid"
-  >Enter</button>
+    [disabled]="form.invalid || submitted"
+  >Enter
+  </button>
 </form>
