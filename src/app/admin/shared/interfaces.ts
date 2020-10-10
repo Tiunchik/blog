@@ -8,3 +8,15 @@ export interface FirebaseAuthResponce {
   idToken: string;
   expiresIn: string;
 }
+
+export interface Post {
+  id?: string;
+  title: string;
+  author: string;
+  text: string;
+  date: Date;
+}
+
+export interface FbCreateResponse {
+  name: string;
+}
