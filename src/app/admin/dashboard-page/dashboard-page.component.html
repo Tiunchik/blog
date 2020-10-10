@@ -15,7 +15,9 @@
       <td>{{ind + 1}}</td>
       <td>{{post.author}}</td>
       <td>{{post.title}}</td>
-      <td>{{post.date | date:'medium'}}</td>
+      <!--  Пример перевода на русский язык - вместо timezone передали 0, а вот локализацию передаил ru,
+      как записано в registerLocaleData в админском модулк -->
+      <td>{{post.date | date:'medium':null:'ru'}}</td>
       <td>
         <button
           [routerLink]="['/admin','post',post.id,'edit']"

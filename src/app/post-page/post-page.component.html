@@ -1,21 +1,22 @@
-<div class="post">
-  <div class="header">
-    <h1>Post title</h1>
-    <button
-      routerLink="/"
-      class="btn btn-link"
-    >Main Page</button>
-  </div>
-  <div class="info">
-    <strong>Author here</strong>
-    <small>15.10.2020</small>
-  </div>
-
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi beatae, deleniti doloribus enim eum, impedit itaque molestiae obcaecati odio odit placeat, possimus quae qui reiciendis totam veniam. Accusamus accusantium commodi dolor eius esse et ipsa magnam maxime obcaecati, officiis, possimus, quam saepe similique unde veniam! In iure provident voluptatum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi beatae, deleniti doloribus enim eum, impedit itaque molestiae obcaecati odio odit placeat, possimus quae qui reiciendis totam veniam. Accusamus accusantium commodi dolor eius esse et ipsa magnam maxime obcaecati, officiis, possimus, quam saepe similique unde veniam! In iure provident voluptatum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi beatae, deleniti doloribus enim eum, impedit itaque molestiae obcaecati odio odit placeat, possimus quae qui reiciendis totam veniam. Accusamus accusantium commodi dolor eius esse et ipsa magnam maxime obcaecati, officiis, possimus, quam saepe similique unde veniam! In iure provident voluptatum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi beatae, deleniti doloribus enim eum, impedit itaque molestiae obcaecati odio odit placeat, possimus quae qui reiciendis totam veniam. Accusamus accusantium commodi dolor eius esse et ipsa magnam maxime obcaecati, officiis, possimus, quam saepe similique unde veniam! In iure provident voluptatum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi beatae, deleniti doloribus enim eum, impedit itaque molestiae obcaecati odio odit placeat, possimus quae qui reiciendis totam veniam. Accusamus accusantium commodi dolor eius esse et ipsa magnam maxime obcaecati, officiis, possimus, quam saepe similique unde veniam! In iure provident voluptatum.</p>
+<div *ngIf="post; else loading">
+  <div class="post">
+    <div class="header">
+      <h1>{{post.title | titlecase}}</h1>
+      <button
+        routerLink="/"
+        class="btn btn-link"
+      >Main Page
+      </button>
+    </div>
+    <div class="info">
+      <strong>{{post.author}}</strong>
+      <small>1{{post.date | date:'medium'}}</small>
+    </div>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
 </div>
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>
